@@ -28,7 +28,7 @@ function HomePage() {
 
     const [searchParams, setSearchParams] = useSearchParams({ search: '' })
     const searcher = searchParams.get('search')
-    const [axiosCall, setAxiosCall] = useState('https://opendevweb-51212536012a.herokuapp.com/api/question_get_all');
+    const [axiosCall, setAxiosCall] = useState('http://localhost:5002/api/question_get_all/');
     const [page, setPage] = useState(1);
     const [loadedEntries, setLoadedEntries] = useState(0);
     const [totalEntries, setTotalEntries] = useState();
@@ -36,8 +36,15 @@ function HomePage() {
     const [searchT, setSearchT] = useState(false);
     const [searchR, setSearchR] = useState();
 
+
     useEffect(() => {
-        if (axiosCall.startsWith('https://opendevweb-51212536012a.herokuapp.com/api/question_get_all')) {
+        // Read all questions
+        // if (searcher === '') {
+        //     setAxiosCall('http://localhost:5002/api/question_get_all/?page=${page}');
+        // } else {
+        //     setAxiosCall('http://localhost:5002/api/searchquestion/' + searcher);
+        // }
+        if (axiosCall.startsWith('http://localhost:5002/api/question_get_all/')) {
             Axios.get(axiosCall)
                 .then(res => {
                     const { entries, totalEntries } = res.data;
@@ -89,9 +96,9 @@ function HomePage() {
 
     const handleSearch = () => {
         if (searcher === '') {
-            setAxiosCall('https://opendevweb-51212536012a.herokuapp.com/api/question_get_all');
+            setAxiosCall('http://localhost:5002/api/question_get_all/');
         } else {
-            setAxiosCall('https://opendevweb-51212536012a.herokuapp.com/api/searchquestion/' + searcher);
+            setAxiosCall('http://localhost:5002/api/searchquestion/' + searcher);
         }
     }
 
@@ -103,9 +110,9 @@ function HomePage() {
         console.log('clicked');
         if (newLoaded >= totalEntries) {
             setloadMoreS(false);
-            setAxiosCall(`https://opendevweb-51212536012a.herokuapp.com/api/question_get_all/?page=${nextpage}`);
+            setAxiosCall(`http://localhost:5002/api/question_get_all/?page=${nextpage}`);
         } else {
-            setAxiosCall(`https://opendevweb-51212536012a.herokuapp.com/api/question_get_all/?page=${nextpage}`);
+            setAxiosCall(`http://localhost:5002/api/question_get_all/?page=${nextpage}`);
         }
     }
 

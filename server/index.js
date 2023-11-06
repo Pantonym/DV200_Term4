@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const path = require('path');
+const { path } = require('path');
 
 // Route Uses
 const questionRoute = require('./routes/question');
@@ -21,9 +21,9 @@ app.use((req, res, next) => {
     next();
 });
 
-// app.use(cors({
-//     origin: 'http://localhost:3000'
-// }));
+app.use(cors({
+    origin: 'http://localhost:3000'
+}));
 
 // TODO Allows you to access images in the public folder
 //app.use(express.static(path.join(__dirname, 'images')));
@@ -43,13 +43,6 @@ app.use(likeRoute);
 app.use(authRoute);
 // app.use(answerRoute);
 
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
-
-// Serve the React app's 'index.html' for all routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
-});
-
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -59,6 +52,6 @@ mongoose.connect(process.env.DB_CONNECTION, {
         console.log("No Connection. Reason: " + err);
     });
 
-const PORT = process.env.PORT || 5005;
+const PORT = process.env.PORT || 5003;
 
 app.listen(PORT, () => { console.log(`Server has started at port: ${PORT}`) });
