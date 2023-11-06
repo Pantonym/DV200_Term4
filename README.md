@@ -485,6 +485,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 **Ungerer Hattingh** - [221302@virtualwindow.co.za](mailto:221302@virtualwindow.co.za)
 
 * **Project Link** - https://github.com/Pantonym/DV200_Term4
+* **Deployment Link** - https://open-dev-hosting-3b07672094d5.herokuapp.com/
 
 <!-- ACKNOWLEDGEMENTS -->
 <!-- all resources that you used and Acknowledgements here -->
