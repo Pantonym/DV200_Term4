@@ -27,7 +27,7 @@ const SignIn = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = 'https://opendevweb-51212536012a.herokuapp.com/api/auth'
+      const url = 'https://opendevungerer-67a33b0d08e8.herokuapp.com/api/auth'
       const { data: res } = await axios.post(url, data);
       sessionStorage.setItem("token", res.data);
       sessionStorage.setItem("useremail", data.email);
